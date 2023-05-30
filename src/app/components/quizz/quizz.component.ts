@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import quizz_questions from "../../../assets/data/quizz_questions.json"
 
 @Component({
@@ -8,7 +8,6 @@ import quizz_questions from "../../../assets/data/quizz_questions.json"
 })
 
 export class QuizzComponent implements OnInit {
-
   title:string = ""
 
   questions:any
@@ -34,14 +33,12 @@ export class QuizzComponent implements OnInit {
 
       this.questionIndex = 0
       this.questionMaxIndex = this.questions.length
-
-      console.log(this.questionIndex)
-      console.log(this.questionMaxIndex)
     }
 
   }
 
   playerChoose(value:string){
+    console.log(value);
     this.answers.push(value)
     this.nextStep()
 

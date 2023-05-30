@@ -1,9 +1,6 @@
 <div class="quizz__container">
 
-  <div class="quizz_logo">
-    <img src="assets/imgs/logo.png" alt="" srcset="">
-    <h3>{{title}}</h3>
-  </div>
+  <app-title [title]="title"></app-title>
 
   <div *ngIf=!finished class="quizz_questions">
       <h3>{{questionSelected.question}}</h3>
@@ -11,18 +8,16 @@
 
   <div *ngIf=!finished class="quizz_options">
 
-    <button
+    <app-quizz-button
       *ngFor="let option of questionSelected.options; let i = index"
-      (click)="playerChoose(option.alias)"
-      class="btn-option"
-    >
-      {{option.name}}
-    </button>
+      [name]="option.name"
+      (onClick)="playerChoose(option.alias)">
+    </app-quizz-button>
 
   </div>
 
-  <div *ngIf=finished class="quizz_results">
-    <h1>O Seu resultado é:</h1>
-    <p>{{answerSelected}}</p>
-  </div>
+  <app-quizz-results
+    *ngIf=finished
+    [answerSelected]="answerSelected">
+  </app-quizz-results>
 </div>
